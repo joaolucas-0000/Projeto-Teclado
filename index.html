@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teclado 3D</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #0e0909;
+    }
+
+    .keyboard {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .key {
+      width: 50px;
+      height: 50px;
+      background-color: #000;
+      color: rgb(238, 238, 238);
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px #333;
+      transition: all 0.1s ease-in-out;
+      user-select: none;
+    }
+
+    .key:active,
+    .key.clicked {
+      background-color: red;
+      box-shadow: 0 2px #222;
+      transform: translateY(2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="keyboard" id="keyboard"></div>
+
+  <script>
+    const keyboard = document.getElementById('keyboard');
+
+    const rows = [
+      "1234567890",
+      "qwertyuiop",
+      "asdfghjklç",
+      "zxcvbnm"
+    ];
+
+    rows.forEach(row => {
+      const rowDiv = document.createElement('div');
+      rowDiv.classList.add('row');
+
+      row.split('').forEach(key => {
+        const keyDiv = document.createElement('div');
+        keyDiv.classList.add('key');
+        keyDiv.textContent = key.toUpperCase();
+
+        keyDiv.addEventListener('click', () => {
+          keyDiv.classList.add('clicked');
+          setTimeout(() => keyDiv.classList.remove('clicked'), 200);
+        });
+
+        rowDiv.appendChild(keyDiv);
+      });
+
+      keyboard.appendChild(rowDiv);
+    });
+  </script>
+</body>
+</html>
