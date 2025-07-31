@@ -22,4 +22,4 @@ O Teclado Virtual é uma aplicação web que simula um teclado funcional, estili
 
 1. Clone o repositório para sua máquina local:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   https://github.com/joaolucas-0000/Projeto-Teclado.git
